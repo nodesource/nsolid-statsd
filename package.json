@@ -1,0 +1,35 @@
+{
+  "name": "nsolid-statsd",
+  "version": "1.0.0",
+  "description": "a daemon that sends N|Solid metrics to statsd",
+  "main": "daemon",
+  "scripts": {
+    "start": "nsolid daemon",
+    "utest": "nsolid test/index.js | tap-spec",
+    "test": "npm run utest && standard",
+    "watch": "nodemon --exec 'npm test' --ext js,json"
+  },
+  "bin": {
+    "nsolid-statsd" : "./daemon.js"
+  },
+  "dependencies": {
+    "camelize": "~1.0.0",
+    "rc": "~1.1.0"
+  },
+  "author": "NodeSource",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "~1.8.1",
+    "tape": "~4.2.0",
+    "tap-spec": "~4.1.1",
+    "standard": "~5.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodesource/nsolid-statsd.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nodesource/nsolid-statsd/issues"
+  },
+  "homepage": "https://github.com/nodesource/nsolid-statsd"
+}
