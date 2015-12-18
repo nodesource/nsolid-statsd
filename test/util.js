@@ -1,12 +1,17 @@
 'use strict'
 
+const path = require('path')
+
 const test = require('tape')
+
 const util = require('../lib/util')
+
+const ThisFile = path.basename(__filename)
 
 runTests()
 
 function runTests () {
-  test('normalizeName', function (t) {
+  test(`${ThisFile} normalizeName`, function (t) {
     t.equal(util.normalizeName(''), '')
     t.equal(util.normalizeName('a'), 'a')
     t.equal(util.normalizeName('-'), '-')
@@ -24,22 +29,22 @@ function runTests () {
     t.end()
   })
 
-  test('parseAddress', function (t) {
+  test(`${ThisFile} parseAddress`, function (t) {
     t.deepEqual(util.parseAddress('example.com:80'), ['example.com', '80'])
     t.end()
   })
 
-  test('normalizeAddress', function (t) {
+  test(`${ThisFile} normalizeAddress`, function (t) {
     t.equal(util.normalizeAddress('', 42), 'localhost:42')
     t.equal(util.normalizeAddress(':', 9000), 'localhost:9000')
     t.equal(util.normalizeAddress('locohost', 666), 'locohost:666')
     t.equal(util.normalizeAddress('2001', 2002), 'localhost:2001')
     t.equal(util.normalizeAddress('example.com:80', 8080), 'example.com:80')
-    t.equal(util.normalizeAddress('http://example.com:80', 8081), 'http://example.com:80')
+    t.equal(util.normalizeAddress('http://example.net:80', 8081), 'http://example.net:80')
     t.equal(util.normalizeAddress('http://example.com', 80), 'http://example.com:80')
     t.equal(util.normalizeAddress('https://example.com', 443), 'https://example.com:443')
     t.equal(util.normalizeAddress('http://', 80), 'http://localhost:80')
-    t.equal(util.normalizeAddress('http://:', 80), 'http://localhost:80')
+    t.equal(util.normalizeAddress('http://:', 443), 'http://localhost:443')
     t.equal(util.normalizeAddress('http://:81', 80), 'http://localhost:81')
     t.equal(util.normalizeAddress(':::80', 8082), ':::80')
     t.equal(util.normalizeAddress('locohost:', 8083), 'locohost:8083')

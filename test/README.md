@@ -44,9 +44,9 @@ integration test with DataDog
 
   To test with tags, if you're using a version of N|Solid with tag support, use:
 
-      node daemon --fragmentTags -- :
+      node daemon --tags -- :
 
-  The `--` string after `--fragmentTags` is required so that the `:` string
+  The `--` string after `--tags` is required so that the `:` string
   isn't interpreted as the value of the option.
 
 * You can now go look at the [Infrastructure list][] again, and see the `nsolid`

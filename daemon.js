@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 'use strict'
 
 const pkg = require('./package.json')
@@ -12,8 +14,8 @@ util.debug('config: %j', conf)
 const statsdClient = statsd.createClient(conf)
 const nsolidClient = nsolid.createClient(conf)
 
-console.log(`sending metrics from: N|Solid proxy at: ${conf.nsolidAddress}`)
-console.log(`sending metrics to:   statsd server at: ${conf.statsdAddress}`)
+console.log(`sending metrics to:   statsd server: ${conf.statsdAddress}`)
+console.log(`sending metrics from: N|Solid proxy: ${conf.nsolidAddress}`)
 
 setInterval(getNSolidMetrics, conf.interval * 1000)
 
@@ -24,15 +26,12 @@ function getNSolidMetrics () {
 function gotNSolidProcessStats (err, stats) {
   // Not doing process and system stats in parallel; these may cause an
   // info command to be run, and serializing them like this will prevent
-  // multiple info commands from being invoked.  Also, if there aren't
-  // any stats available, the early return here will prevent the system_stats
-  // command from being run at all.
-
-  if (!stats) return
-
+  // multiple info commands from being invoked.
   nsolidClient.getSystemStats(gotNSolidSystemStats)
 
   if (err) return console.error(`error getting N|Solid process stats: ${err}`)
+
+  if (!stats) return
 
   statsdClient.sendNSolidProcessStats(stats)
 }
