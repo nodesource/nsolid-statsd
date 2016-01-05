@@ -9,7 +9,7 @@ documentation, submitting pull requests or patches, and other activities.
 We are committed to making participation in this project a harassment-free
 experience for everyone, regardless of level of experience, gender, gender
 identity and expression, sexual orientation, disability, personal appearance,
-body size, race, ethnicity, age, religion, or nationality.
+body size, race, ethnicity, age, religion, citizenship or national origin.
 
 Examples of unacceptable behavior by participants include:
 
@@ -26,10 +26,10 @@ comments, commits, code, wiki edits, issues, and other contributions that are
 not aligned to this Code of Conduct. By adopting this Code of Conduct, project
 maintainers commit themselves to fairly and consistently applying these
 principles to every aspect of managing this project. Project maintainers who do
-not follow or enforce the Code of Conduct may be permanently removed from the
+not follow or enforce this Code of Conduct may be permanently removed from the
 project team.
 
-This code of conduct applies both within project spaces and in public spaces
+This Code of Conduct applies both within project spaces and outside of project spaces
 when an individual is representing the project or its community.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
