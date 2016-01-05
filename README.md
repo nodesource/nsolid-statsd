@@ -90,7 +90,6 @@ The association of N|Solid metrics to statsd metrics is as follows:
 
 N-Solid metric                   | statsd metric
 -------------------------------  | -------------
-process stats - uptime           | {prefix}.{app}.process.uptime         
 process stats - rss              | {prefix}.{app}.process.rss            
 process stats - heapTotal        | {prefix}.{app}.process.heapTotal      
 process stats - heapUsed         | {prefix}.{app}.process.heapUsed       
@@ -98,7 +97,6 @@ process stats - active_requests  | {prefix}.{app}.process.activeRequests
 process stats - active_handles   | {prefix}.{app}.process.activeHandles
 process stats - cpu              | {prefix}.{app}.process.cpu            
 system stats - freemem           | {prefix}.{app}.system.freemem         
-system stats - uptime            | {prefix}.{app}.system.uptime          
 system stats - load_1m           | {prefix}.{app}.system.load1m         
 system stats - load_5m           | {prefix}.{app}.system.load5m         
 system stats - load_15m          | {prefix}.{app}.system.load15m        
