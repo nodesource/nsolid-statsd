@@ -50,6 +50,11 @@ function runTests () {
     t.equal(util.normalizeAddress('locohost:', 8083), 'locohost:8083')
     t.equal(util.normalizeAddress(':8084', 8085), 'localhost:8084')
     t.throws(() => util.normalizeAddress('localhost:x'), /non-numeric port specified in address/)
+    t.equal(util.normalizeAddress('127.0.0.1', 8086), '127.0.0.1:8086')
+    t.equal(util.normalizeAddress('127.0.0.2:', 8087), '127.0.0.2:8087')
+    t.equal(util.normalizeAddress('127.0.0.3:8088', 8089), '127.0.0.3:8088')
+    t.equal(util.normalizeAddress('::1:8089', 8090), '::1:8089')
+    t.equal(util.normalizeAddress('::1', 8091), '::1') // must provide port w/IPv6 addr
     t.end()
   })
 }

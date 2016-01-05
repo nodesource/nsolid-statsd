@@ -52,7 +52,8 @@ should be in one of the following formats:
     host:port
 
 If port is not specified, the default is 8125 for statsd-address, and 9000 for
-proxy-address. If host is not specified, the default is localhost.
+proxy-address. If host is not specified, the default is localhost.  The host
+may be a hostname or IPv4 address.
 
 For the proxy-address parameter, you may also prefix the parameter with either
 `http://` or `https://` (default being `http://`).
