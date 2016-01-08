@@ -9,6 +9,12 @@ The metrics from N|Solid will be obtained using the `nsolid-cli` command,
 which is shipped with N|Solid, in the same directory as the `nsolid` command.
 
 
+installation
+================================================================================
+
+    npm install nsolit-statsd
+
+
 usage
 ================================================================================
 
@@ -39,7 +45,7 @@ options are:
     --tags <boolean>     - append N|Solid tags to the metrics
                            default: false
 
-Options are parsed with the npm rc module, and so options can be set in
+Options are parsed with the [npm rc module][], and so options can be set in
 environment variables or files, as supported by rc.  For example, you can
 specify options in a file named `.nsolid-statsdrc`.
 
@@ -134,7 +140,7 @@ If you'd like to contribute code to this project, please read the
 
 
 [N|Solid]: https://nodesource.com/products/nsolid
-[npm-rc]: https://www.npmjs.com/package/rc
+[npm rc module]: https://www.npmjs.com/package/rc
 [N|Solid Process and System Statistics documentation]: https://docs.nodesource.com/docs/process-and-system-statistics
 [issue at GitHub]: https://github.com/nodesource/nsolid-statsd/issues
 [CONTRIBUTING.md]: CONTRIBUTING.md
