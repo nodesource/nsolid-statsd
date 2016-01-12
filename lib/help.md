@@ -40,15 +40,17 @@ should be in one of the following formats:
     host:port
 
 If port is not specified, the default is 8125 for statsd-address, and 9000 for
-proxy-address. If host is not specified, the default is localhost.
+proxy-address. If host is not specified, the default is localhost.  The host
+may be a hostname or IPv4 address.
 
 For the proxy-address parameter, you may also prefix the parameter with either
 `http://` or `https://` (default being `http://`).
 
-When the --tags option is used, the metrics sent to statsd will be modified to
-include the tags values associated with the N|Solid instance the metric
-originated from.  If the tags associated with an N|Solid instance are tag-A,
-tag-B, and tag-C, the metrics will have the following string appended to them:
+When the `--tags` option is used, the metrics sent to statsd will be modified to
+include the tags value associated with the N|Solid instance the metric
+originated from.  If the tags associated with an N|Solid instance are `tag-A`,
+`tag-B`, and `tag-C`, the metrics will have the following string appended to
+them:
 
     |#tag-A,tag-B,tag-C
 

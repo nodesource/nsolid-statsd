@@ -3,6 +3,17 @@
   "version": "1.0.0",
   "description": "a daemon that sends N|Solid metrics to statsd",
   "main": "daemon",
+  "license": "MIT",
+  "preferGlobal": true,  
+  "author": "NodeSource <npm@nodesource.com> (https://nodesource.com)",
+  "contributors": [
+    "Patrick Mueller <pmuellr@nodesource.com> (https://github.com/pmuellr)"
+  ],
+  "keywords": [
+    "N|Solid",
+    "nsolid",
+    "statsd"
+  ],
   "scripts": {
     "start": "nsolid daemon",
     "utest": "nsolid test/index.js | tap-spec",
@@ -16,8 +27,6 @@
     "camelize": "~1.0.0",
     "rc": "~1.1.0"
   },
-  "author": "NodeSource",
-  "license": "MIT",
   "devDependencies": {
     "nodemon": "~1.8.1",
     "tape": "~4.2.0",

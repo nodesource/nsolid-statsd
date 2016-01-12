@@ -2,8 +2,8 @@ nsolid-statsd - a daemon that sends N|Solid metrics to statsd
 ================================================================================
 
 This package provides a daemon which will monitor [N|Solid][] runtimes and send
-the metrics from the runtimes to statsd.  The runtimes that are monitored are
-selected based on the command-line parameters.
+the metrics from the runtimes to [statsd][].  The runtimes that are monitored
+are selected based on the command-line parameters.
 
 The metrics from N|Solid will be obtained using the `nsolid-cli` command,
 which is shipped with N|Solid, in the same directory as the `nsolid` command.
@@ -67,7 +67,8 @@ For the proxy-address parameter, you may also prefix the parameter with either
 When the `--tags` option is used, the metrics sent to statsd will be modified to
 include the tags value associated with the N|Solid instance the metric
 originated from.  If the tags associated with an N|Solid instance are `tag-A`,
-`tag-B`, and `tag-C`, the metrics will have the following string appended to them:
+`tag-B`, and `tag-C`, the metrics will have the following string appended to
+them:
 
     |#tag-A,tag-B,tag-C
 
@@ -138,9 +139,30 @@ To submit a bug report, please create an [issue at GitHub][].
 If you'd like to contribute code to this project, please read the
 [CONTRIBUTING.md][] document.
 
+Authors and Contributors
+================================================================================
+
+<table><tbody>
+  <tr>
+    <th align="left">Patrick Mueller</th>
+    <td><a href="https://github.com/pmuellr">GitHub/pmuellr</a></td>
+    <td><a href="https://twitter.com/pmuellr">Twitter/@pmuellr</a></td>
+  </tr>
+</tbody></table>
+
+
+License & Copyright
+================================================================================
+
+**nsolid-statsd** is Copyright (c) 2016 NodeSource and licensed under the
+MIT license. All rights not explicitly granted in the MIT license are reserved.
+See the included [LICENSE.md][] file for more details.
+
 
 [N|Solid]: https://nodesource.com/products/nsolid
+[statsd]: https://github.com/etsy/statsd
 [npm rc module]: https://www.npmjs.com/package/rc
 [N|Solid Process and System Statistics documentation]: https://docs.nodesource.com/docs/process-and-system-statistics
 [issue at GitHub]: https://github.com/nodesource/nsolid-statsd/issues
 [CONTRIBUTING.md]: CONTRIBUTING.md
+[LICENSE.md]: LICENSE.md

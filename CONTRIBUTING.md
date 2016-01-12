@@ -21,11 +21,3 @@ is nothing but a bunch of `require()` invocations for the actual test files.
 To run tests continuously whenever you change source files, you can use
 the command `npm run watch`, which will use `nodemon` (installed as a
 dev-dependency) to run the tests whenever a source file changes.
-
-
-GitHub usage
---------------------------------------------------------------------------------
-
-* Develop major features on feature branches, and submit PRs to `master`.
-
-* Never force push onto `master`.
