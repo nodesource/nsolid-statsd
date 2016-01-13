@@ -39,6 +39,7 @@ function runTests () {
     t.equal(util.normalizeAddress(':', 9000), 'localhost:9000')
     t.equal(util.normalizeAddress('locohost', 666), 'locohost:666')
     t.equal(util.normalizeAddress('2001', 2002), 'localhost:2001')
+    t.equal(util.normalizeAddress(2003, 2004), 'localhost:2003')
     t.equal(util.normalizeAddress('example.com:80', 8080), 'example.com:80')
     t.equal(util.normalizeAddress('http://example.net:80', 8081), 'http://example.net:80')
     t.equal(util.normalizeAddress('http://example.com', 80), 'http://example.com:80')

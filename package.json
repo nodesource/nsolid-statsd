@@ -4,7 +4,7 @@
   "description": "a daemon that sends N|Solid metrics to statsd",
   "main": "daemon",
   "license": "MIT",
-  "preferGlobal": true,  
+  "preferGlobal": true,
   "author": "NodeSource <npm@nodesource.com> (https://nodesource.com)",
   "contributors": [
     "Patrick Mueller <pmuellr@nodesource.com> (https://github.com/pmuellr)"
