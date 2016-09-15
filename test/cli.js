@@ -2,7 +2,7 @@
 
 const fs = require('fs')
 const path = require('path')
-const child_process = require('child_process')
+const ChildProcess = require('child_process')
 
 const test = require('tape')
 
@@ -81,7 +81,7 @@ function runTests () {
     })
   })
 
-  test(`${ThisFile} bad proxy port`, function (t) {
+  test(`${ThisFile} bad storage port`, function (t) {
     runApp(': localhost:x', 2000, (err, stdout, stderr) => {
       t.notEqual(err, null, 'err should not be null')
 
@@ -100,7 +100,7 @@ function runTests () {
 // calls cb(err, stdout, stderr), where stdout/stderr are strings
 function runApp (parameters, timeout, cb) {
   const cmd = `node ${AppFile} ${parameters}`
-  child_process.exec(cmd, execCB)
+  ChildProcess.exec(cmd, execCB)
 
   let finished = false
   setTimeout(timedOutCB, timeout)

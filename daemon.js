@@ -14,34 +14,19 @@ util.debug('config: %j', conf)
 const statsdClient = statsd.createClient(conf)
 const nsolidClient = nsolid.createClient(conf)
 
-console.log(`sending metrics to:   statsd server: ${conf.statsdAddress}`)
-console.log(`sending metrics from: N|Solid proxy: ${conf.nsolidAddress}`)
+process.title = 'nsolid-statsd'
 
-setInterval(getNSolidMetrics, conf.interval * 1000)
+console.log(`Sending metrics to:   statsd server: ${conf.statsdAddress}`)
+console.log(`Sending metrics from: N|Solid storage: ${conf.nsolidAddress}`)
 
-function getNSolidMetrics () {
-  nsolidClient.getProcessStats(gotNSolidProcessStats)
-}
+// This creates a stream and only has to be done once
+nsolidClient.getMetrics(gotNSolidMetrics)
 
-function gotNSolidProcessStats (err, stats) {
-  // Not doing process and system stats in parallel; these may cause an
-  // info command to be run, and serializing them like this will prevent
-  // multiple info commands from being invoked.
-  nsolidClient.getSystemStats(gotNSolidSystemStats)
-
-  if (err) return console.error(`error getting N|Solid process stats: ${err}`)
-
+function gotNSolidMetrics (err, stats) {
+  if (err) return console.error(`Error getting N|Solid process stats: ${err.message}`)
   if (!stats) return
 
-  statsdClient.sendNSolidProcessStats(stats)
-}
-
-function gotNSolidSystemStats (err, stats) {
-  if (err) return console.error(`error getting N|Solid system stats: ${err}`)
-
-  if (!stats) return
-
-  statsdClient.sendNSolidSystemStats(stats)
+  statsdClient.sendNSolidMetrics(stats)
 }
 
 function getConfig () {

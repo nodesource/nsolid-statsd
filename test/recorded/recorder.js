@@ -6,7 +6,7 @@ const secondsString = process.argv[2] || '10'
 
 const totalSeconds = parseInt(secondsString, 10)
 if (isNaN(totalSeconds)) {
-  console.error(`expecting seconds to record as parameter`)
+  console.error('expecting seconds to record as parameter')
   process.exit(1)
 }
 

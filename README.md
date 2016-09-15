@@ -5,9 +5,6 @@ This package provides a daemon which will monitor [N|Solid][] runtimes and send
 the metrics from the runtimes to [statsd][].  The runtimes that are monitored
 are selected based on the command-line parameters.
 
-The metrics from N|Solid will be obtained using the `nsolid-cli` command,
-which is shipped with N|Solid, in the same directory as the `nsolid` command.
-
 
 installation
 ================================================================================
@@ -18,15 +15,15 @@ installation
 usage
 ================================================================================
 
-    nsolid-statsd [options] [statsd-address [proxy-address]]
+    nsolid-statsd [options] [statsd-address [storage-address]]
 
 where:
 
     statsd-address - the {address} of the statsd UDP server
                      default: localhost:8125
 
-    proxy-address  - the {address} of the N|Solid proxy server
-                     default: localhost:9000
+    storage-address  - the {address} of the N|Solid storage server's API port
+                     default: localhost:4000
 
 See {address} below for the expected format of these addresses.
 
@@ -36,10 +33,6 @@ options are:
     -v --version         - print the program version
     --app <app name>     - the N|Solid application name to monitor
                            default: monitor all applications
-    --interval <seconds> - number of seconds between polling N|Solid metrics
-                           default: 10 seconds
-    --timeout <seconds>  - number of seconds to wait for response from N|Solid
-                           default: 10 seconds
     --prefix <value>     - prefix statsd metric names with the specified value
                            default: 'nsolid'
     --tags <boolean>     - append N|Solid tags to the metrics
@@ -49,7 +42,7 @@ Options are parsed with the [npm rc module][], and so options can be set in
 environment variables or files, as supported by rc.  For example, you can
 specify options in a file named `.nsolid-statsdrc`.
 
-The {address} parameter of the statsd-address and proxy-address parameters
+The {address} parameter of the statsd-address and storage-address parameters
 should be in one of the following formats:
 
     :
@@ -57,15 +50,12 @@ should be in one of the following formats:
     host
     host:port
 
-If port is not specified, the default is 8125 for statsd-address, and 9000 for
-proxy-address. If host is not specified, the default is localhost.  The host
+If port is not specified, the default is 8125 for statsd-address, and 4000 for
+storage-address. If host is not specified, the default is localhost.  The host
 may be a hostname or IPv4 address.
 
-For the proxy-address parameter, you may also prefix the parameter with either
-`http://` or `https://` (default being `http://`).
-
-When the `--tags` option is used, the metrics sent to statsd will be modified to
-include the tags value associated with the N|Solid instance the metric
+When the `--tags` option is used, the metrics sent to statsd will be modified
+to include the tags value associated with the N|Solid instance the metric
 originated from.  If the tags associated with an N|Solid instance are `tag-A`,
 `tag-B`, and `tag-C`, the metrics will have the following string appended to
 them:
@@ -80,12 +70,12 @@ examples
 
     nsolid-statsd example.com
 
-Poll metrics every 10 seconds from the N|Solid proxy at `localhost:9000` and
-send them to the statsd server at `example.com:8125`.
+Poll metrics from the N|Solid storage at `localhost:4000` and send them to the
+statsd server at `example.com:8125`.
 
-    nsolid-statsd --interval 1 --tags true -- : example.com
+    nsolid-statsd --tags true -- : example.com
 
-Poll metrics every second from the N|Solid proxy at `example.com:9000` and
+Poll metrics every second from the N|Solid storage at `example.com:4000` and
 send them to the statsd server at `localhost:8125`.  Send the N|Solid
 application tags as suffixes on the metrics.
 
@@ -95,19 +85,19 @@ statsd metric names
 
 The association of N|Solid metrics to statsd metrics is as follows:
 
-N-Solid metric                   | statsd metric
--------------------------------  | -------------
-process stats - rss              | {prefix}.{app}.process.rss            
-process stats - heapTotal        | {prefix}.{app}.process.heapTotal      
-process stats - heapUsed         | {prefix}.{app}.process.heapUsed       
-process stats - active_requests  | {prefix}.{app}.process.activeRequests
-process stats - active_handles   | {prefix}.{app}.process.activeHandles
-process stats - cpu              | {prefix}.{app}.process.cpu            
-system stats - freemem           | {prefix}.{app}.system.freemem         
-system stats - load_1m           | {prefix}.{app}.system.load1m         
-system stats - load_5m           | {prefix}.{app}.system.load5m         
-system stats - load_15m          | {prefix}.{app}.system.load15m        
-system stats - cpu_speed         | {prefix}.{app}.system.cpuSpeed       
+N-Solid metric   | statsd metric
+---------------  | -------------
+rss              | {prefix}.{app}.process.rss
+heapTotal        | {prefix}.{app}.process.heapTotal
+heapUsed         | {prefix}.{app}.process.heapUsed
+activeRequests   | {prefix}.{app}.process.activeRequests
+activeHandles    | {prefix}.{app}.process.activeHandles
+cpu              | {prefix}.{app}.process.cpu
+freeMem          | {prefix}.{app}.system.freemem
+load1m           | {prefix}.{app}.system.load1m
+load5m           | {prefix}.{app}.system.load5m
+load15m          | {prefix}.{app}.system.load15m
+cpuSpeed         | {prefix}.{app}.system.cpuSpeed
 
 The `{prefix}` value can be specified via command-line option, and defaults to
 `nsolid`.  The `{app}` value is the name of the N|Solid application.
@@ -147,6 +137,11 @@ Authors and Contributors
     <th align="left">Patrick Mueller</th>
     <td><a href="https://github.com/pmuellr">GitHub/pmuellr</a></td>
     <td><a href="https://twitter.com/pmuellr">Twitter/@pmuellr</a></td>
+  </tr>
+  <tr>
+    <th align="left">Dave Olszewski</th>
+    <td><a href="https://github.com/cxreg">GitHub/cxreg</a></td>
+    <td><a href="https://twitter.com/cxreg">Twitter/@cxreg</a></td>
   </tr>
 </tbody></table>
 
