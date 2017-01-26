@@ -22,27 +22,26 @@ integration test with DataDog
   CPU usage, Load Averages, etc - just from the DataDog agent (not coming in
   any way from N|Solid).
 
-* Run the module test/apps/animals.js, passing an argument of the NSOLID_HUB
-  value to use when launching instances.  For instance, if your etcd is running
-  at `example.com` on port 5000, you'd run:
+* Run the module test/apps/trees.js with `nsolid`, with it connecting to a
+  running N|Solid storage server.
 
-      nsolid test/apps/animals.js example.com:5000
+      nsolid test/apps/trees.js
 
   This will start a number of N|Solid instances with different app names and
   tags.  See the module for for complete details.  These modules don't do very
-  much. You should ensure the expected apps come up in the console using the
-  specified NSOLID_HUB value you launched the module with.
+  much. You should ensure the expected apps come up in the N|Solid Console or
+  are listed with `nsolid-cli ls`.
 
 * Now run `nsolid-statsd`, which expects the statsd server address and the
-  N|Solid proxy address as arguments.  The addresses should be host:port, but
+  N|Solid Storage address as arguments.  The addresses should be host:port, but
   the default host is `localhost` and the default parts are 8125 (statsd) and
-  9000 (N|Solid proxy).  To run with the default Datadog agent (which runs a
-  statsd server at `localhost:8125`) and default N|Solid proxy (localhost:9000),
+  4000 (N|Solid Storage).  To run with the default Datadog agent (which runs a
+  statsd server at `localhost:8125`) and default N|Solid Storage (localhost:4000),
   start `nsolid-statsd` as
 
       node daemon :
 
-  To test with tags, if you're using a version of N|Solid with tag support, use:
+  To test with tags, use:
 
       node daemon --tags -- :
 

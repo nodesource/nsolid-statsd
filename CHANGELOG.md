@@ -1,12 +1,13 @@
 Changelog
 =========
 
-## v2.0.0 - October 28, 2016
+## v2.0.0 - January 26, 2017
 
 Features
 
 - N|Solid 2.0 compatibility
 - Switched from cli subprocess to client library
+- Dockerfile added
 
 Deprecations
 

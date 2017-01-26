@@ -2,8 +2,6 @@
 
 const cluster = require('cluster')
 
-const NSOLID_HUB = process.argv[2] || '4001'
-
 const Apps = [
   {name: 'Elegant Elm', tags: 'geo:eu'},
   {name: 'Hoary Hemlock', tags: 'geo:ap,small'},
@@ -20,8 +18,6 @@ cluster.isMaster ? runMaster() : runWorker()
 function runMaster () {
   cluster.on('exit', workerExited)
 
-  console.log(`starting apps with NSOLID_HUB set to ${NSOLID_HUB}`)
-
   for (let app of Apps) {
     // launch two instances of each app
     launchApp(app)
@@ -33,7 +29,6 @@ function runMaster () {
 
 function launchApp (app) {
   const env = {
-    NSOLID_HUB: NSOLID_HUB,
     NSOLID_APPNAME: app.name
   }
 

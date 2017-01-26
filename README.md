@@ -87,17 +87,17 @@ The association of N|Solid metrics to statsd metrics is as follows:
 
 N-Solid metric   | statsd metric
 ---------------  | -------------
-rss              | {prefix}.{app}.process.rss
+activeHandles    | {prefix}.{app}.process.activeHandles
+activeRequests   | {prefix}.{app}.process.activeRequests
+cpu              | {prefix}.{app}.process.cpu
+cpuSpeed         | {prefix}.{app}.system.cpuSpeed
+freeMem          | {prefix}.{app}.system.freeMem
 heapTotal        | {prefix}.{app}.process.heapTotal
 heapUsed         | {prefix}.{app}.process.heapUsed
-activeRequests   | {prefix}.{app}.process.activeRequests
-activeHandles    | {prefix}.{app}.process.activeHandles
-cpu              | {prefix}.{app}.process.cpu
-freeMem          | {prefix}.{app}.system.freemem
+load15m          | {prefix}.{app}.system.load15m
 load1m           | {prefix}.{app}.system.load1m
 load5m           | {prefix}.{app}.system.load5m
-load15m          | {prefix}.{app}.system.load15m
-cpuSpeed         | {prefix}.{app}.system.cpuSpeed
+rss              | {prefix}.{app}.process.rss
 
 The `{prefix}` value can be specified via command-line option, and defaults to
 `nsolid`.  The `{app}` value is the name of the N|Solid application.
@@ -142,6 +142,10 @@ Authors and Contributors
     <th align="left">Dave Olszewski</th>
     <td><a href="https://github.com/cxreg">GitHub/cxreg</a></td>
     <td><a href="https://twitter.com/cxreg">Twitter/@cxreg</a></td>
+  <tr>
+    <th align="left">Johannes Würbach</th>
+    <td><a href="https://github.com/johanneswuerbach">GitHub/johanneswuerbach</a></td>
+    <td>&nbsp;</td>
   </tr>
 </tbody></table>
 
@@ -149,7 +153,7 @@ Authors and Contributors
 License & Copyright
 ================================================================================
 
-**nsolid-statsd** is Copyright (c) 2016 NodeSource and licensed under the
+**nsolid-statsd** is Copyright (c) 2016-2017 NodeSource and licensed under the
 MIT license. All rights not explicitly granted in the MIT license are reserved.
 See the included [LICENSE.md][] file for more details.
 
@@ -157,7 +161,7 @@ See the included [LICENSE.md][] file for more details.
 [N|Solid]: https://nodesource.com/products/nsolid
 [statsd]: https://github.com/etsy/statsd
 [npm rc module]: https://www.npmjs.com/package/rc
-[N|Solid Process and System Statistics documentation]: https://docs.nodesource.com/docs/process-and-system-statistics
+[N|Solid Process and System Statistics documentation]: https://docs.nodesource.com/docs/using-the-cli
 [issue at GitHub]: https://github.com/nodesource/nsolid-statsd/issues
 [CONTRIBUTING.md]: CONTRIBUTING.md
 [LICENSE.md]: LICENSE.md
