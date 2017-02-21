@@ -1,4 +1,4 @@
-FROM nodesource/nsolid:latest
+FROM nodesource/nsolid:boron-latest
 
 RUN mkdir -p /usr/src/app
 
