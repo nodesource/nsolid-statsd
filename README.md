@@ -82,7 +82,7 @@ application tags as suffixes on the metrics.
 docker
 ================================================================================
 
-NodeSource provides a Docker image to easily get add nsolid-statsd to an
+NodeSource provides a Docker image to easily get add `nsolid-statsd` to an
 environment already using containers.
 
     docker pull nodesource/nsolid-statsd

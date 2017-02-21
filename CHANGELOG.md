@@ -1,6 +1,14 @@
 Changelog
 =========
 
+## v2.0.1 - February 21, 2017
+
+Features
+
+- Added support for N|Solid and statsd endpoint configuration via environment variables
+- Base Docker image now using N|Solid Boron
+- Added documentation for using the nsolid-statsd Docker image on Docker Hub
+
 ## v2.0.0 - January 26, 2017
 
 Features
