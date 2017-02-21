@@ -49,3 +49,7 @@ function exit (statusCode, fn) {
   fn()
   process.exit(statusCode)
 }
+
+process.on('SIGTERM', () => {
+  exit(0, () => console.log('Shutting down'))
+});

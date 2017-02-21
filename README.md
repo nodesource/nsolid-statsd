@@ -79,6 +79,28 @@ Poll metrics every second from the N|Solid storage at `example.com:4000` and
 send them to the statsd server at `localhost:8125`.  Send the N|Solid
 application tags as suffixes on the metrics.
 
+docker
+================================================================================
+
+NodeSource provides a Docker image to easily get add nsolid-statsd to an
+environment already using containers.
+
+    docker pull nodesource/nsolid-statsd
+
+Running the `nsolid-statsd` image
+
+    docker run -d --name="nsolid-statsd" nsolid-statsd --tags storage:4000 statsd:8125
+
+Poll metrics every second from the N|Solid storage at `storage:4000` and send them to the
+statsd server at `statsd:8125`. It also sends the N|Solid application tags as suffixes
+on the metrics.
+
+`nsolid-statsd` also supports using environment variables for providing the N|Solid
+Storage and statsd endpoints
+
+    docker run -d --name="nsolid-statsd" -e NSOLID_ADDRESS=storage:4000 -e STATSD_ADDRESS=statsd:8125 nsolid-statsd
+
+
 
 statsd metric names
 ================================================================================
@@ -142,6 +164,12 @@ Authors and Contributors
     <th align="left">Dave Olszewski</th>
     <td><a href="https://github.com/cxreg">GitHub/cxreg</a></td>
     <td><a href="https://twitter.com/cxreg">Twitter/@cxreg</a></td>
+  </tr>
+  <tr>
+    <th align="left">Joe Doyle</th>
+    <td><a href="https://github.com/joedoyle23">GitHub/JoeDoyle23</a></td>
+    <td><a href="https://twitter.com/JoeDoyle23">Twitter/@JoeDoyle23</a></td>
+  </tr>
   <tr>
     <th align="left">Johannes Würbach</th>
     <td><a href="https://github.com/johanneswuerbach">GitHub/johanneswuerbach</a></td>
