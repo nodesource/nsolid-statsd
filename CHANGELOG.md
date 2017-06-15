@@ -1,6 +1,14 @@
 Changelog
 =========
 
+## v2.2.0 - June 15, 2017
+
+Features
+
+- Bumped version to match N|Solid
+- Added support for new N|Solid metrics introduced into version 2.2
+- Statsd bucket format matches N|Solid statsd format
+
 ## v2.0.1 - February 21, 2017
 
 Features

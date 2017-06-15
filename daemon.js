@@ -52,4 +52,4 @@ function exit (statusCode, fn) {
 
 process.on('SIGTERM', () => {
   exit(0, () => console.log('Shutting down'))
-});
+})
